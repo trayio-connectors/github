@@ -8,7 +8,10 @@
 module.exports = {
 
   input: {
-    // Add generic schema inputs (API keys etc) in here
+    access_token: {
+      type: 'string',
+      required: true
+    }
   }
 
 };

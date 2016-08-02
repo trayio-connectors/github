@@ -3,6 +3,8 @@
   "description": "Interact with the GitHub API.",
   "version": "0.0.1",
   "dependencies": {
+    "@trayio/falafel": "^1.1.17",
+    "mout": "^1.0.0"
   },
   "scripts": {
     "start": "node main.js",
@@ -18,6 +20,12 @@
   "author": "Chris Houghton",
   "license": "ISC",
   "devDependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "generate-schema": "^2.1.1",
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
   },
   "repository": {
     "type": "git",

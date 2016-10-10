@@ -10,7 +10,9 @@ module.exports = {
   input: {
     access_token: {
       type: 'string',
-      required: true
+      required: true,
+      advanced: true,
+      defaultJsonPath: '$.auth.access_token'
     }
   }
 

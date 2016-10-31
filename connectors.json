@@ -9,7 +9,7 @@
     ],
     "icon": {
       "type": "url",
-      "value": "//s3.amazonaws.com/images.tray.io/static/icons/placeholder.png"
+      "value": "//s3.amazonaws.com/images.tray.io/static/icons/github.png"
     },
     "messages": [
       {
@@ -1053,13 +1053,27 @@
               "description": "Show anonymous contributors in results?",
               "default": false,
               "title": "Show anonymous contributors"
+            },
+            "page": {
+              "type": "integer",
+              "description": "The page number of items you'd like to return.",
+              "default": 1,
+              "title": "Page"
+            },
+            "per_page": {
+              "type": "integer",
+              "description": "How many items would you like to return per page? Max is 100.",
+              "default": 100,
+              "title": "Per page"
             }
           },
           "$schema": "http://json-schema.org/draft-04/schema#",
           "required": [
             "access_token",
             "username",
-            "repository"
+            "repository",
+            "page",
+            "per_page"
           ],
           "advanced": [],
           "additionalProperties": false

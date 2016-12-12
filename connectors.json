@@ -13,6 +13,1331 @@
     },
     "messages": [
       {
+        "name": "create_release",
+        "title": "Create a release",
+        "description": "Create a release on a GitHub repository.",
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "access_token": {
+              "type": "string",
+              "default_jsonpath": "$.auth.access_token",
+              "title": "Access token"
+            },
+            "username": {
+              "type": "string",
+              "description": "The GitHub username, e.g. \"trayio\"",
+              "title": "Username"
+            },
+            "repository": {
+              "type": "string",
+              "description": "The GitHub repository, e.g. \"falafel\"",
+              "title": "Repository"
+            },
+            "tag_name": {
+              "type": "string",
+              "description": "The name of the tag",
+              "title": "Tag name"
+            },
+            "target_commitish": {
+              "type": "string",
+              "description": "Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch (usually master).",
+              "title": "Target commitish"
+            },
+            "name": {
+              "type": "string",
+              "description": "The name of the release",
+              "title": "Name"
+            },
+            "body": {
+              "type": "string",
+              "description": "Text describing the contents of the tag",
+              "title": "Body"
+            },
+            "draft": {
+              "type": "boolean",
+              "description": "true to create a draft (unpublished) release, false to create a published one. Default: false",
+              "title": "Draft"
+            },
+            "prerelease": {
+              "type": "boolean",
+              "description": "true to identify the release as a prerelease. false to identify the release as a full release. Default: false",
+              "title": "Prerelease"
+            }
+          },
+          "required": [
+            "access_token",
+            "username",
+            "repository",
+            "tag_name"
+          ],
+          "advanced": [
+            "access_token"
+          ],
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "additionalProperties": false
+        },
+        "output_schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "assets_url": {
+              "type": "string"
+            },
+            "upload_url": {
+              "type": "string"
+            },
+            "tarball_url": {
+              "type": "string"
+            },
+            "zipball_url": {
+              "type": "string"
+            },
+            "id": {
+              "type": "number"
+            },
+            "tag_name": {
+              "type": "string"
+            },
+            "target_commitish": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "body": {
+              "type": "string"
+            },
+            "draft": {
+              "type": "boolean"
+            },
+            "prerelease": {
+              "type": "boolean"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "published_at": {
+              "type": "string"
+            },
+            "author": {
+              "type": "object",
+              "properties": {
+                "login": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "number"
+                },
+                "avatar_url": {
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "followers_url": {
+                  "type": "string"
+                },
+                "following_url": {
+                  "type": "string"
+                },
+                "gists_url": {
+                  "type": "string"
+                },
+                "starred_url": {
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "type": "string"
+                },
+                "repos_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "assets": {
+              "type": "array",
+              "items": {}
+            }
+          }
+        }
+      },
+      {
+        "name": "get_pull_request",
+        "title": "Get a single pull request",
+        "description": "Get a pull request from a GitHub repository.",
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "access_token": {
+              "type": "string",
+              "default_jsonpath": "$.auth.access_token",
+              "title": "Access token"
+            },
+            "username": {
+              "type": "string",
+              "description": "The GitHub username, e.g. \"trayio\"",
+              "title": "Username"
+            },
+            "repository": {
+              "type": "string",
+              "description": "The GitHub repository, e.g. \"falafel\"",
+              "title": "Repository"
+            },
+            "number": {
+              "type": [
+                "string",
+                "number"
+              ],
+              "description": "The pull request number",
+              "title": "Number"
+            }
+          },
+          "required": [
+            "access_token",
+            "username",
+            "repository",
+            "number"
+          ],
+          "advanced": [
+            "access_token"
+          ],
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "additionalProperties": false
+        },
+        "output_schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number"
+            },
+            "url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "diff_url": {
+              "type": "string"
+            },
+            "patch_url": {
+              "type": "string"
+            },
+            "issue_url": {
+              "type": "string"
+            },
+            "commits_url": {
+              "type": "string"
+            },
+            "review_comments_url": {
+              "type": "string"
+            },
+            "review_comment_url": {
+              "type": "string"
+            },
+            "comments_url": {
+              "type": "string"
+            },
+            "statuses_url": {
+              "type": "string"
+            },
+            "number": {
+              "type": "number"
+            },
+            "state": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "body": {
+              "type": "string"
+            },
+            "assignee": {
+              "type": "object",
+              "properties": {
+                "login": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "number"
+                },
+                "avatar_url": {
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "followers_url": {
+                  "type": "string"
+                },
+                "following_url": {
+                  "type": "string"
+                },
+                "gists_url": {
+                  "type": "string"
+                },
+                "starred_url": {
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "type": "string"
+                },
+                "repos_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "milestone": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "labels_url": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "number"
+                },
+                "number": {
+                  "type": "number"
+                },
+                "state": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "creator": {
+                  "type": "object",
+                  "properties": {
+                    "login": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "number"
+                    },
+                    "avatar_url": {
+                      "type": "string"
+                    },
+                    "gravatar_id": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "html_url": {
+                      "type": "string"
+                    },
+                    "followers_url": {
+                      "type": "string"
+                    },
+                    "following_url": {
+                      "type": "string"
+                    },
+                    "gists_url": {
+                      "type": "string"
+                    },
+                    "starred_url": {
+                      "type": "string"
+                    },
+                    "subscriptions_url": {
+                      "type": "string"
+                    },
+                    "organizations_url": {
+                      "type": "string"
+                    },
+                    "repos_url": {
+                      "type": "string"
+                    },
+                    "events_url": {
+                      "type": "string"
+                    },
+                    "received_events_url": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "site_admin": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "open_issues": {
+                  "type": "number"
+                },
+                "closed_issues": {
+                  "type": "number"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "updated_at": {
+                  "type": "string"
+                },
+                "closed_at": {
+                  "type": "string"
+                },
+                "due_on": {
+                  "type": "string"
+                }
+              }
+            },
+            "locked": {
+              "type": "boolean"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "closed_at": {
+              "type": "string"
+            },
+            "merged_at": {
+              "type": "string"
+            },
+            "head": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "ref": {
+                  "type": "string"
+                },
+                "sha": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "login": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "number"
+                    },
+                    "avatar_url": {
+                      "type": "string"
+                    },
+                    "gravatar_id": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "html_url": {
+                      "type": "string"
+                    },
+                    "followers_url": {
+                      "type": "string"
+                    },
+                    "following_url": {
+                      "type": "string"
+                    },
+                    "gists_url": {
+                      "type": "string"
+                    },
+                    "starred_url": {
+                      "type": "string"
+                    },
+                    "subscriptions_url": {
+                      "type": "string"
+                    },
+                    "organizations_url": {
+                      "type": "string"
+                    },
+                    "repos_url": {
+                      "type": "string"
+                    },
+                    "events_url": {
+                      "type": "string"
+                    },
+                    "received_events_url": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "site_admin": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "repo": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "owner": {
+                      "type": "object",
+                      "properties": {
+                        "login": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "number"
+                        },
+                        "avatar_url": {
+                          "type": "string"
+                        },
+                        "gravatar_id": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "html_url": {
+                          "type": "string"
+                        },
+                        "followers_url": {
+                          "type": "string"
+                        },
+                        "following_url": {
+                          "type": "string"
+                        },
+                        "gists_url": {
+                          "type": "string"
+                        },
+                        "starred_url": {
+                          "type": "string"
+                        },
+                        "subscriptions_url": {
+                          "type": "string"
+                        },
+                        "organizations_url": {
+                          "type": "string"
+                        },
+                        "repos_url": {
+                          "type": "string"
+                        },
+                        "events_url": {
+                          "type": "string"
+                        },
+                        "received_events_url": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "site_admin": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "full_name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "private": {
+                      "type": "boolean"
+                    },
+                    "fork": {
+                      "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "html_url": {
+                      "type": "string"
+                    },
+                    "archive_url": {
+                      "type": "string"
+                    },
+                    "assignees_url": {
+                      "type": "string"
+                    },
+                    "blobs_url": {
+                      "type": "string"
+                    },
+                    "branches_url": {
+                      "type": "string"
+                    },
+                    "clone_url": {
+                      "type": "string"
+                    },
+                    "collaborators_url": {
+                      "type": "string"
+                    },
+                    "comments_url": {
+                      "type": "string"
+                    },
+                    "commits_url": {
+                      "type": "string"
+                    },
+                    "compare_url": {
+                      "type": "string"
+                    },
+                    "contents_url": {
+                      "type": "string"
+                    },
+                    "contributors_url": {
+                      "type": "string"
+                    },
+                    "deployments_url": {
+                      "type": "string"
+                    },
+                    "downloads_url": {
+                      "type": "string"
+                    },
+                    "events_url": {
+                      "type": "string"
+                    },
+                    "forks_url": {
+                      "type": "string"
+                    },
+                    "git_commits_url": {
+                      "type": "string"
+                    },
+                    "git_refs_url": {
+                      "type": "string"
+                    },
+                    "git_tags_url": {
+                      "type": "string"
+                    },
+                    "git_url": {
+                      "type": "string"
+                    },
+                    "hooks_url": {
+                      "type": "string"
+                    },
+                    "issue_comment_url": {
+                      "type": "string"
+                    },
+                    "issue_events_url": {
+                      "type": "string"
+                    },
+                    "issues_url": {
+                      "type": "string"
+                    },
+                    "keys_url": {
+                      "type": "string"
+                    },
+                    "labels_url": {
+                      "type": "string"
+                    },
+                    "languages_url": {
+                      "type": "string"
+                    },
+                    "merges_url": {
+                      "type": "string"
+                    },
+                    "milestones_url": {
+                      "type": "string"
+                    },
+                    "mirror_url": {
+                      "type": "string"
+                    },
+                    "notifications_url": {
+                      "type": "string"
+                    },
+                    "pulls_url": {
+                      "type": "string"
+                    },
+                    "releases_url": {
+                      "type": "string"
+                    },
+                    "ssh_url": {
+                      "type": "string"
+                    },
+                    "stargazers_url": {
+                      "type": "string"
+                    },
+                    "statuses_url": {
+                      "type": "string"
+                    },
+                    "subscribers_url": {
+                      "type": "string"
+                    },
+                    "subscription_url": {
+                      "type": "string"
+                    },
+                    "svn_url": {
+                      "type": "string"
+                    },
+                    "tags_url": {
+                      "type": "string"
+                    },
+                    "teams_url": {
+                      "type": "string"
+                    },
+                    "trees_url": {
+                      "type": "string"
+                    },
+                    "homepage": {
+                      "type": "string"
+                    },
+                    "language": {
+                      "type": "null"
+                    },
+                    "forks_count": {
+                      "type": "number"
+                    },
+                    "stargazers_count": {
+                      "type": "number"
+                    },
+                    "watchers_count": {
+                      "type": "number"
+                    },
+                    "size": {
+                      "type": "number"
+                    },
+                    "default_branch": {
+                      "type": "string"
+                    },
+                    "open_issues_count": {
+                      "type": "number"
+                    },
+                    "has_issues": {
+                      "type": "boolean"
+                    },
+                    "has_wiki": {
+                      "type": "boolean"
+                    },
+                    "has_pages": {
+                      "type": "boolean"
+                    },
+                    "has_downloads": {
+                      "type": "boolean"
+                    },
+                    "pushed_at": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    },
+                    "permissions": {
+                      "type": "object",
+                      "properties": {
+                        "admin": {
+                          "type": "boolean"
+                        },
+                        "push": {
+                          "type": "boolean"
+                        },
+                        "pull": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "base": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "ref": {
+                  "type": "string"
+                },
+                "sha": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "login": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "number"
+                    },
+                    "avatar_url": {
+                      "type": "string"
+                    },
+                    "gravatar_id": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "html_url": {
+                      "type": "string"
+                    },
+                    "followers_url": {
+                      "type": "string"
+                    },
+                    "following_url": {
+                      "type": "string"
+                    },
+                    "gists_url": {
+                      "type": "string"
+                    },
+                    "starred_url": {
+                      "type": "string"
+                    },
+                    "subscriptions_url": {
+                      "type": "string"
+                    },
+                    "organizations_url": {
+                      "type": "string"
+                    },
+                    "repos_url": {
+                      "type": "string"
+                    },
+                    "events_url": {
+                      "type": "string"
+                    },
+                    "received_events_url": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "site_admin": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "repo": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "owner": {
+                      "type": "object",
+                      "properties": {
+                        "login": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "number"
+                        },
+                        "avatar_url": {
+                          "type": "string"
+                        },
+                        "gravatar_id": {
+                          "type": "string"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "html_url": {
+                          "type": "string"
+                        },
+                        "followers_url": {
+                          "type": "string"
+                        },
+                        "following_url": {
+                          "type": "string"
+                        },
+                        "gists_url": {
+                          "type": "string"
+                        },
+                        "starred_url": {
+                          "type": "string"
+                        },
+                        "subscriptions_url": {
+                          "type": "string"
+                        },
+                        "organizations_url": {
+                          "type": "string"
+                        },
+                        "repos_url": {
+                          "type": "string"
+                        },
+                        "events_url": {
+                          "type": "string"
+                        },
+                        "received_events_url": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "site_admin": {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "full_name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "private": {
+                      "type": "boolean"
+                    },
+                    "fork": {
+                      "type": "boolean"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "html_url": {
+                      "type": "string"
+                    },
+                    "archive_url": {
+                      "type": "string"
+                    },
+                    "assignees_url": {
+                      "type": "string"
+                    },
+                    "blobs_url": {
+                      "type": "string"
+                    },
+                    "branches_url": {
+                      "type": "string"
+                    },
+                    "clone_url": {
+                      "type": "string"
+                    },
+                    "collaborators_url": {
+                      "type": "string"
+                    },
+                    "comments_url": {
+                      "type": "string"
+                    },
+                    "commits_url": {
+                      "type": "string"
+                    },
+                    "compare_url": {
+                      "type": "string"
+                    },
+                    "contents_url": {
+                      "type": "string"
+                    },
+                    "contributors_url": {
+                      "type": "string"
+                    },
+                    "deployments_url": {
+                      "type": "string"
+                    },
+                    "downloads_url": {
+                      "type": "string"
+                    },
+                    "events_url": {
+                      "type": "string"
+                    },
+                    "forks_url": {
+                      "type": "string"
+                    },
+                    "git_commits_url": {
+                      "type": "string"
+                    },
+                    "git_refs_url": {
+                      "type": "string"
+                    },
+                    "git_tags_url": {
+                      "type": "string"
+                    },
+                    "git_url": {
+                      "type": "string"
+                    },
+                    "hooks_url": {
+                      "type": "string"
+                    },
+                    "issue_comment_url": {
+                      "type": "string"
+                    },
+                    "issue_events_url": {
+                      "type": "string"
+                    },
+                    "issues_url": {
+                      "type": "string"
+                    },
+                    "keys_url": {
+                      "type": "string"
+                    },
+                    "labels_url": {
+                      "type": "string"
+                    },
+                    "languages_url": {
+                      "type": "string"
+                    },
+                    "merges_url": {
+                      "type": "string"
+                    },
+                    "milestones_url": {
+                      "type": "string"
+                    },
+                    "mirror_url": {
+                      "type": "string"
+                    },
+                    "notifications_url": {
+                      "type": "string"
+                    },
+                    "pulls_url": {
+                      "type": "string"
+                    },
+                    "releases_url": {
+                      "type": "string"
+                    },
+                    "ssh_url": {
+                      "type": "string"
+                    },
+                    "stargazers_url": {
+                      "type": "string"
+                    },
+                    "statuses_url": {
+                      "type": "string"
+                    },
+                    "subscribers_url": {
+                      "type": "string"
+                    },
+                    "subscription_url": {
+                      "type": "string"
+                    },
+                    "svn_url": {
+                      "type": "string"
+                    },
+                    "tags_url": {
+                      "type": "string"
+                    },
+                    "teams_url": {
+                      "type": "string"
+                    },
+                    "trees_url": {
+                      "type": "string"
+                    },
+                    "homepage": {
+                      "type": "string"
+                    },
+                    "language": {
+                      "type": "null"
+                    },
+                    "forks_count": {
+                      "type": "number"
+                    },
+                    "stargazers_count": {
+                      "type": "number"
+                    },
+                    "watchers_count": {
+                      "type": "number"
+                    },
+                    "size": {
+                      "type": "number"
+                    },
+                    "default_branch": {
+                      "type": "string"
+                    },
+                    "open_issues_count": {
+                      "type": "number"
+                    },
+                    "has_issues": {
+                      "type": "boolean"
+                    },
+                    "has_wiki": {
+                      "type": "boolean"
+                    },
+                    "has_pages": {
+                      "type": "boolean"
+                    },
+                    "has_downloads": {
+                      "type": "boolean"
+                    },
+                    "pushed_at": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    },
+                    "permissions": {
+                      "type": "object",
+                      "properties": {
+                        "admin": {
+                          "type": "boolean"
+                        },
+                        "push": {
+                          "type": "boolean"
+                        },
+                        "pull": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "_links": {
+              "type": "object",
+              "properties": {
+                "self": {
+                  "type": "object",
+                  "properties": {
+                    "href": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "html": {
+                  "type": "object",
+                  "properties": {
+                    "href": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "issue": {
+                  "type": "object",
+                  "properties": {
+                    "href": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "comments": {
+                  "type": "object",
+                  "properties": {
+                    "href": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "review_comments": {
+                  "type": "object",
+                  "properties": {
+                    "href": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "review_comment": {
+                  "type": "object",
+                  "properties": {
+                    "href": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "commits": {
+                  "type": "object",
+                  "properties": {
+                    "href": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "statuses": {
+                  "type": "object",
+                  "properties": {
+                    "href": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "user": {
+              "type": "object",
+              "properties": {
+                "login": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "number"
+                },
+                "avatar_url": {
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "followers_url": {
+                  "type": "string"
+                },
+                "following_url": {
+                  "type": "string"
+                },
+                "gists_url": {
+                  "type": "string"
+                },
+                "starred_url": {
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "type": "string"
+                },
+                "repos_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "merge_commit_sha": {
+              "type": "string"
+            },
+            "merged": {
+              "type": "boolean"
+            },
+            "mergeable": {
+              "type": "boolean"
+            },
+            "merged_by": {
+              "type": "object",
+              "properties": {
+                "login": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "number"
+                },
+                "avatar_url": {
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "followers_url": {
+                  "type": "string"
+                },
+                "following_url": {
+                  "type": "string"
+                },
+                "gists_url": {
+                  "type": "string"
+                },
+                "starred_url": {
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "type": "string"
+                },
+                "repos_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "comments": {
+              "type": "number"
+            },
+            "commits": {
+              "type": "number"
+            },
+            "additions": {
+              "type": "number"
+            },
+            "deletions": {
+              "type": "number"
+            },
+            "changed_files": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      {
         "name": "get_repository",
         "title": "Get repository",
         "description": "Get details about a GitHub repository.",
@@ -35,7 +1360,6 @@
               "title": "Repository"
             }
           },
-          "$schema": "http://json-schema.org/draft-04/schema#",
           "required": [
             "access_token",
             "username",
@@ -44,6 +1368,7 @@
           "advanced": [
             "access_token"
           ],
+          "$schema": "http://json-schema.org/draft-04/schema#",
           "additionalProperties": false
         },
         "output_schema": {
@@ -909,6 +2234,245 @@
         }
       },
       {
+        "name": "get_latest_release",
+        "title": "Get the latest release",
+        "description": "Get the latest release of a GitHub repository.",
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "access_token": {
+              "type": "string",
+              "default_jsonpath": "$.auth.access_token",
+              "title": "Access token"
+            },
+            "username": {
+              "type": "string",
+              "description": "The GitHub username, e.g. \"trayio\"",
+              "title": "Username"
+            },
+            "repository": {
+              "type": "string",
+              "description": "The GitHub repository, e.g. \"falafel\"",
+              "title": "Repository"
+            }
+          },
+          "required": [
+            "access_token",
+            "username",
+            "repository"
+          ],
+          "advanced": [
+            "access_token"
+          ],
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "additionalProperties": false
+        },
+        "output_schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "assets_url": {
+              "type": "string"
+            },
+            "upload_url": {
+              "type": "string"
+            },
+            "tarball_url": {
+              "type": "string"
+            },
+            "zipball_url": {
+              "type": "string"
+            },
+            "id": {
+              "type": "number"
+            },
+            "tag_name": {
+              "type": "string"
+            },
+            "target_commitish": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "body": {
+              "type": "string"
+            },
+            "draft": {
+              "type": "boolean"
+            },
+            "prerelease": {
+              "type": "boolean"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "published_at": {
+              "type": "string"
+            },
+            "author": {
+              "type": "object",
+              "properties": {
+                "login": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "number"
+                },
+                "avatar_url": {
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "followers_url": {
+                  "type": "string"
+                },
+                "following_url": {
+                  "type": "string"
+                },
+                "gists_url": {
+                  "type": "string"
+                },
+                "starred_url": {
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "type": "string"
+                },
+                "repos_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "assets": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "browser_download_url": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "number"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "content_type": {
+                    "type": "string"
+                  },
+                  "size": {
+                    "type": "number"
+                  },
+                  "download_count": {
+                    "type": "number"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "type": "string"
+                  },
+                  "uploader": {
+                    "type": "object",
+                    "properties": {
+                      "login": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "avatar_url": {
+                        "type": "string"
+                      },
+                      "gravatar_id": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "html_url": {
+                        "type": "string"
+                      },
+                      "followers_url": {
+                        "type": "string"
+                      },
+                      "following_url": {
+                        "type": "string"
+                      },
+                      "gists_url": {
+                        "type": "string"
+                      },
+                      "starred_url": {
+                        "type": "string"
+                      },
+                      "subscriptions_url": {
+                        "type": "string"
+                      },
+                      "organizations_url": {
+                        "type": "string"
+                      },
+                      "repos_url": {
+                        "type": "string"
+                      },
+                      "events_url": {
+                        "type": "string"
+                      },
+                      "received_events_url": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "site_admin": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
         "name": "get_user",
         "title": "Get user",
         "description": "Get details about a GitHub user.",
@@ -926,7 +2490,6 @@
               "title": "Username"
             }
           },
-          "$schema": "http://json-schema.org/draft-04/schema#",
           "required": [
             "access_token",
             "username"
@@ -934,6 +2497,7 @@
           "advanced": [
             "access_token"
           ],
+          "$schema": "http://json-schema.org/draft-04/schema#",
           "additionalProperties": false
         },
         "output_schema": {
@@ -1034,6 +2598,1568 @@
         }
       },
       {
+        "name": "list_issues",
+        "title": "List issues",
+        "description": "List issues from a GitHub repository.",
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "access_token": {
+              "type": "string",
+              "default_jsonpath": "$.auth.access_token",
+              "title": "Access token"
+            },
+            "username": {
+              "type": "string",
+              "description": "The GitHub username, e.g. \"trayio\"",
+              "title": "Username"
+            },
+            "repository": {
+              "type": "string",
+              "description": "The GitHub repository, e.g. \"falafel\"",
+              "title": "Repository"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "",
+                "open",
+                "closed",
+                "all"
+              ],
+              "description": "Indicates the state of the issues to return",
+              "title": "State"
+            },
+            "milestone": {
+              "type": [
+                "",
+                "integer",
+                "string"
+              ],
+              "description": "The milestone set to the issue to return",
+              "title": "Milestone"
+            },
+            "assignee": {
+              "type": "string",
+              "description": "The user having the issue assigned to",
+              "title": "Assignee"
+            },
+            "creator": {
+              "type": "string",
+              "description": "The user that created the issue",
+              "title": "Creator"
+            },
+            "mentioned": {
+              "type": "string",
+              "description": "A user that's mentioned in the issue",
+              "title": "Mentioned"
+            },
+            "labels": {
+              "type": "string",
+              "description": "A list of comma separated label names. Example: bug,ui,@high",
+              "title": "Labels"
+            },
+            "sort": {
+              "type": "string",
+              "enum": [
+                "",
+                "created",
+                "updated",
+                "comments"
+              ],
+              "description": "What to sort results by",
+              "title": "Sort"
+            },
+            "direction": {
+              "type": "string",
+              "enum": [
+                "",
+                "asc",
+                "desc"
+              ],
+              "description": "The direction of the sort",
+              "title": "Direction"
+            },
+            "since": {
+              "type": "string",
+              "description": "Only issues updated at or after this time are returned. This is a timestamp in ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ.",
+              "title": "Since"
+            }
+          },
+          "required": [
+            "access_token",
+            "username",
+            "repository"
+          ],
+          "advanced": [
+            "access_token"
+          ],
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "additionalProperties": false
+        },
+        "output_schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "repository_url": {
+                    "type": "string"
+                  },
+                  "labels_url": {
+                    "type": "string"
+                  },
+                  "comments_url": {
+                    "type": "string"
+                  },
+                  "events_url": {
+                    "type": "string"
+                  },
+                  "html_url": {
+                    "type": "string"
+                  },
+                  "number": {
+                    "type": "number"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "login": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "avatar_url": {
+                        "type": "string"
+                      },
+                      "gravatar_id": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "html_url": {
+                        "type": "string"
+                      },
+                      "followers_url": {
+                        "type": "string"
+                      },
+                      "following_url": {
+                        "type": "string"
+                      },
+                      "gists_url": {
+                        "type": "string"
+                      },
+                      "starred_url": {
+                        "type": "string"
+                      },
+                      "subscriptions_url": {
+                        "type": "string"
+                      },
+                      "organizations_url": {
+                        "type": "string"
+                      },
+                      "repos_url": {
+                        "type": "string"
+                      },
+                      "events_url": {
+                        "type": "string"
+                      },
+                      "received_events_url": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "site_admin": {
+                        "type": "boolean"
+                      }
+                    }
+                  },
+                  "labels": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "url": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "color": {
+                          "type": "string"
+                        },
+                        "default": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  },
+                  "assignee": {
+                    "type": "object",
+                    "properties": {
+                      "login": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "avatar_url": {
+                        "type": "string"
+                      },
+                      "gravatar_id": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "html_url": {
+                        "type": "string"
+                      },
+                      "followers_url": {
+                        "type": "string"
+                      },
+                      "following_url": {
+                        "type": "string"
+                      },
+                      "gists_url": {
+                        "type": "string"
+                      },
+                      "starred_url": {
+                        "type": "string"
+                      },
+                      "subscriptions_url": {
+                        "type": "string"
+                      },
+                      "organizations_url": {
+                        "type": "string"
+                      },
+                      "repos_url": {
+                        "type": "string"
+                      },
+                      "events_url": {
+                        "type": "string"
+                      },
+                      "received_events_url": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "site_admin": {
+                        "type": "boolean"
+                      }
+                    }
+                  },
+                  "milestone": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string"
+                      },
+                      "html_url": {
+                        "type": "string"
+                      },
+                      "labels_url": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "number": {
+                        "type": "number"
+                      },
+                      "state": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "creator": {
+                        "type": "object",
+                        "properties": {
+                          "login": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "gravatar_id": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "html_url": {
+                            "type": "string"
+                          },
+                          "followers_url": {
+                            "type": "string"
+                          },
+                          "following_url": {
+                            "type": "string"
+                          },
+                          "gists_url": {
+                            "type": "string"
+                          },
+                          "starred_url": {
+                            "type": "string"
+                          },
+                          "subscriptions_url": {
+                            "type": "string"
+                          },
+                          "organizations_url": {
+                            "type": "string"
+                          },
+                          "repos_url": {
+                            "type": "string"
+                          },
+                          "events_url": {
+                            "type": "string"
+                          },
+                          "received_events_url": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "site_admin": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "open_issues": {
+                        "type": "number"
+                      },
+                      "closed_issues": {
+                        "type": "number"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "closed_at": {
+                        "type": "string"
+                      },
+                      "due_on": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "locked": {
+                    "type": "boolean"
+                  },
+                  "comments": {
+                    "type": "number"
+                  },
+                  "pull_request": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string"
+                      },
+                      "html_url": {
+                        "type": "string"
+                      },
+                      "diff_url": {
+                        "type": "string"
+                      },
+                      "patch_url": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "closed_at": {
+                    "type": "null"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "metadata": {
+              "type": "object",
+              "properties": {
+                "first_page": {
+                  "type": "number"
+                },
+                "last_page": {
+                  "type": "number"
+                },
+                "next_page": {
+                  "type": "number"
+                },
+                "prev_page": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "name": "list_pull_requests",
+        "title": "List pull requests",
+        "description": "List pull requests from a GitHub repository.",
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "access_token": {
+              "type": "string",
+              "default_jsonpath": "$.auth.access_token",
+              "title": "Access token"
+            },
+            "username": {
+              "type": "string",
+              "description": "The GitHub username, e.g. \"trayio\"",
+              "title": "Username"
+            },
+            "repository": {
+              "type": "string",
+              "description": "The GitHub repository, e.g. \"falafel\"",
+              "title": "Repository"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "",
+                "open",
+                "closed",
+                "all"
+              ],
+              "description": "Indicates the state of the issues to return",
+              "title": "State"
+            },
+            "head": {
+              "type": "string",
+              "description": "Filter pulls by head user and branch name in the format of user:ref-name. Example: github:new-script-format.",
+              "title": "Head"
+            },
+            "base": {
+              "type": "string",
+              "description": "Filter pulls by base branch name. Example: gh-pages.",
+              "title": "Base"
+            },
+            "sort": {
+              "type": "string",
+              "enum": [
+                "",
+                "created",
+                "updated",
+                "popularity",
+                "long-running"
+              ],
+              "description": "What to sort results by",
+              "title": "Sort"
+            },
+            "direction": {
+              "type": "string",
+              "enum": [
+                "",
+                "asc",
+                "desc"
+              ],
+              "description": "The direction of the sort",
+              "title": "Direction"
+            }
+          },
+          "required": [
+            "access_token",
+            "username",
+            "repository"
+          ],
+          "advanced": [
+            "access_token"
+          ],
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "additionalProperties": false
+        },
+        "output_schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "html_url": {
+                    "type": "string"
+                  },
+                  "diff_url": {
+                    "type": "string"
+                  },
+                  "patch_url": {
+                    "type": "string"
+                  },
+                  "issue_url": {
+                    "type": "string"
+                  },
+                  "commits_url": {
+                    "type": "string"
+                  },
+                  "review_comments_url": {
+                    "type": "string"
+                  },
+                  "review_comment_url": {
+                    "type": "string"
+                  },
+                  "comments_url": {
+                    "type": "string"
+                  },
+                  "statuses_url": {
+                    "type": "string"
+                  },
+                  "number": {
+                    "type": "number"
+                  },
+                  "state": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "assignee": {
+                    "type": "object",
+                    "properties": {
+                      "login": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "avatar_url": {
+                        "type": "string"
+                      },
+                      "gravatar_id": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "html_url": {
+                        "type": "string"
+                      },
+                      "followers_url": {
+                        "type": "string"
+                      },
+                      "following_url": {
+                        "type": "string"
+                      },
+                      "gists_url": {
+                        "type": "string"
+                      },
+                      "starred_url": {
+                        "type": "string"
+                      },
+                      "subscriptions_url": {
+                        "type": "string"
+                      },
+                      "organizations_url": {
+                        "type": "string"
+                      },
+                      "repos_url": {
+                        "type": "string"
+                      },
+                      "events_url": {
+                        "type": "string"
+                      },
+                      "received_events_url": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "site_admin": {
+                        "type": "boolean"
+                      }
+                    }
+                  },
+                  "milestone": {
+                    "type": "object",
+                    "properties": {
+                      "url": {
+                        "type": "string"
+                      },
+                      "html_url": {
+                        "type": "string"
+                      },
+                      "labels_url": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "number": {
+                        "type": "number"
+                      },
+                      "state": {
+                        "type": "string"
+                      },
+                      "title": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "creator": {
+                        "type": "object",
+                        "properties": {
+                          "login": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "gravatar_id": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "html_url": {
+                            "type": "string"
+                          },
+                          "followers_url": {
+                            "type": "string"
+                          },
+                          "following_url": {
+                            "type": "string"
+                          },
+                          "gists_url": {
+                            "type": "string"
+                          },
+                          "starred_url": {
+                            "type": "string"
+                          },
+                          "subscriptions_url": {
+                            "type": "string"
+                          },
+                          "organizations_url": {
+                            "type": "string"
+                          },
+                          "repos_url": {
+                            "type": "string"
+                          },
+                          "events_url": {
+                            "type": "string"
+                          },
+                          "received_events_url": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "site_admin": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "open_issues": {
+                        "type": "number"
+                      },
+                      "closed_issues": {
+                        "type": "number"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "updated_at": {
+                        "type": "string"
+                      },
+                      "closed_at": {
+                        "type": "string"
+                      },
+                      "due_on": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "locked": {
+                    "type": "boolean"
+                  },
+                  "created_at": {
+                    "type": "string"
+                  },
+                  "updated_at": {
+                    "type": "string"
+                  },
+                  "closed_at": {
+                    "type": "string"
+                  },
+                  "merged_at": {
+                    "type": "string"
+                  },
+                  "head": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string"
+                      },
+                      "ref": {
+                        "type": "string"
+                      },
+                      "sha": {
+                        "type": "string"
+                      },
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "login": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "gravatar_id": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "html_url": {
+                            "type": "string"
+                          },
+                          "followers_url": {
+                            "type": "string"
+                          },
+                          "following_url": {
+                            "type": "string"
+                          },
+                          "gists_url": {
+                            "type": "string"
+                          },
+                          "starred_url": {
+                            "type": "string"
+                          },
+                          "subscriptions_url": {
+                            "type": "string"
+                          },
+                          "organizations_url": {
+                            "type": "string"
+                          },
+                          "repos_url": {
+                            "type": "string"
+                          },
+                          "events_url": {
+                            "type": "string"
+                          },
+                          "received_events_url": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "site_admin": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "repo": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "owner": {
+                            "type": "object",
+                            "properties": {
+                              "login": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "number"
+                              },
+                              "avatar_url": {
+                                "type": "string"
+                              },
+                              "gravatar_id": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "html_url": {
+                                "type": "string"
+                              },
+                              "followers_url": {
+                                "type": "string"
+                              },
+                              "following_url": {
+                                "type": "string"
+                              },
+                              "gists_url": {
+                                "type": "string"
+                              },
+                              "starred_url": {
+                                "type": "string"
+                              },
+                              "subscriptions_url": {
+                                "type": "string"
+                              },
+                              "organizations_url": {
+                                "type": "string"
+                              },
+                              "repos_url": {
+                                "type": "string"
+                              },
+                              "events_url": {
+                                "type": "string"
+                              },
+                              "received_events_url": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "site_admin": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "full_name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "private": {
+                            "type": "boolean"
+                          },
+                          "fork": {
+                            "type": "boolean"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "html_url": {
+                            "type": "string"
+                          },
+                          "archive_url": {
+                            "type": "string"
+                          },
+                          "assignees_url": {
+                            "type": "string"
+                          },
+                          "blobs_url": {
+                            "type": "string"
+                          },
+                          "branches_url": {
+                            "type": "string"
+                          },
+                          "clone_url": {
+                            "type": "string"
+                          },
+                          "collaborators_url": {
+                            "type": "string"
+                          },
+                          "comments_url": {
+                            "type": "string"
+                          },
+                          "commits_url": {
+                            "type": "string"
+                          },
+                          "compare_url": {
+                            "type": "string"
+                          },
+                          "contents_url": {
+                            "type": "string"
+                          },
+                          "contributors_url": {
+                            "type": "string"
+                          },
+                          "deployments_url": {
+                            "type": "string"
+                          },
+                          "downloads_url": {
+                            "type": "string"
+                          },
+                          "events_url": {
+                            "type": "string"
+                          },
+                          "forks_url": {
+                            "type": "string"
+                          },
+                          "git_commits_url": {
+                            "type": "string"
+                          },
+                          "git_refs_url": {
+                            "type": "string"
+                          },
+                          "git_tags_url": {
+                            "type": "string"
+                          },
+                          "git_url": {
+                            "type": "string"
+                          },
+                          "hooks_url": {
+                            "type": "string"
+                          },
+                          "issue_comment_url": {
+                            "type": "string"
+                          },
+                          "issue_events_url": {
+                            "type": "string"
+                          },
+                          "issues_url": {
+                            "type": "string"
+                          },
+                          "keys_url": {
+                            "type": "string"
+                          },
+                          "labels_url": {
+                            "type": "string"
+                          },
+                          "languages_url": {
+                            "type": "string"
+                          },
+                          "merges_url": {
+                            "type": "string"
+                          },
+                          "milestones_url": {
+                            "type": "string"
+                          },
+                          "mirror_url": {
+                            "type": "string"
+                          },
+                          "notifications_url": {
+                            "type": "string"
+                          },
+                          "pulls_url": {
+                            "type": "string"
+                          },
+                          "releases_url": {
+                            "type": "string"
+                          },
+                          "ssh_url": {
+                            "type": "string"
+                          },
+                          "stargazers_url": {
+                            "type": "string"
+                          },
+                          "statuses_url": {
+                            "type": "string"
+                          },
+                          "subscribers_url": {
+                            "type": "string"
+                          },
+                          "subscription_url": {
+                            "type": "string"
+                          },
+                          "svn_url": {
+                            "type": "string"
+                          },
+                          "tags_url": {
+                            "type": "string"
+                          },
+                          "teams_url": {
+                            "type": "string"
+                          },
+                          "trees_url": {
+                            "type": "string"
+                          },
+                          "homepage": {
+                            "type": "string"
+                          },
+                          "language": {
+                            "type": "null"
+                          },
+                          "forks_count": {
+                            "type": "number"
+                          },
+                          "stargazers_count": {
+                            "type": "number"
+                          },
+                          "watchers_count": {
+                            "type": "number"
+                          },
+                          "size": {
+                            "type": "number"
+                          },
+                          "default_branch": {
+                            "type": "string"
+                          },
+                          "open_issues_count": {
+                            "type": "number"
+                          },
+                          "has_issues": {
+                            "type": "boolean"
+                          },
+                          "has_wiki": {
+                            "type": "boolean"
+                          },
+                          "has_pages": {
+                            "type": "boolean"
+                          },
+                          "has_downloads": {
+                            "type": "boolean"
+                          },
+                          "pushed_at": {
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          },
+                          "permissions": {
+                            "type": "object",
+                            "properties": {
+                              "admin": {
+                                "type": "boolean"
+                              },
+                              "push": {
+                                "type": "boolean"
+                              },
+                              "pull": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "base": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string"
+                      },
+                      "ref": {
+                        "type": "string"
+                      },
+                      "sha": {
+                        "type": "string"
+                      },
+                      "user": {
+                        "type": "object",
+                        "properties": {
+                          "login": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "avatar_url": {
+                            "type": "string"
+                          },
+                          "gravatar_id": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "html_url": {
+                            "type": "string"
+                          },
+                          "followers_url": {
+                            "type": "string"
+                          },
+                          "following_url": {
+                            "type": "string"
+                          },
+                          "gists_url": {
+                            "type": "string"
+                          },
+                          "starred_url": {
+                            "type": "string"
+                          },
+                          "subscriptions_url": {
+                            "type": "string"
+                          },
+                          "organizations_url": {
+                            "type": "string"
+                          },
+                          "repos_url": {
+                            "type": "string"
+                          },
+                          "events_url": {
+                            "type": "string"
+                          },
+                          "received_events_url": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "site_admin": {
+                            "type": "boolean"
+                          }
+                        }
+                      },
+                      "repo": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "owner": {
+                            "type": "object",
+                            "properties": {
+                              "login": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "number"
+                              },
+                              "avatar_url": {
+                                "type": "string"
+                              },
+                              "gravatar_id": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "html_url": {
+                                "type": "string"
+                              },
+                              "followers_url": {
+                                "type": "string"
+                              },
+                              "following_url": {
+                                "type": "string"
+                              },
+                              "gists_url": {
+                                "type": "string"
+                              },
+                              "starred_url": {
+                                "type": "string"
+                              },
+                              "subscriptions_url": {
+                                "type": "string"
+                              },
+                              "organizations_url": {
+                                "type": "string"
+                              },
+                              "repos_url": {
+                                "type": "string"
+                              },
+                              "events_url": {
+                                "type": "string"
+                              },
+                              "received_events_url": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "site_admin": {
+                                "type": "boolean"
+                              }
+                            }
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "full_name": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "private": {
+                            "type": "boolean"
+                          },
+                          "fork": {
+                            "type": "boolean"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "html_url": {
+                            "type": "string"
+                          },
+                          "archive_url": {
+                            "type": "string"
+                          },
+                          "assignees_url": {
+                            "type": "string"
+                          },
+                          "blobs_url": {
+                            "type": "string"
+                          },
+                          "branches_url": {
+                            "type": "string"
+                          },
+                          "clone_url": {
+                            "type": "string"
+                          },
+                          "collaborators_url": {
+                            "type": "string"
+                          },
+                          "comments_url": {
+                            "type": "string"
+                          },
+                          "commits_url": {
+                            "type": "string"
+                          },
+                          "compare_url": {
+                            "type": "string"
+                          },
+                          "contents_url": {
+                            "type": "string"
+                          },
+                          "contributors_url": {
+                            "type": "string"
+                          },
+                          "deployments_url": {
+                            "type": "string"
+                          },
+                          "downloads_url": {
+                            "type": "string"
+                          },
+                          "events_url": {
+                            "type": "string"
+                          },
+                          "forks_url": {
+                            "type": "string"
+                          },
+                          "git_commits_url": {
+                            "type": "string"
+                          },
+                          "git_refs_url": {
+                            "type": "string"
+                          },
+                          "git_tags_url": {
+                            "type": "string"
+                          },
+                          "git_url": {
+                            "type": "string"
+                          },
+                          "hooks_url": {
+                            "type": "string"
+                          },
+                          "issue_comment_url": {
+                            "type": "string"
+                          },
+                          "issue_events_url": {
+                            "type": "string"
+                          },
+                          "issues_url": {
+                            "type": "string"
+                          },
+                          "keys_url": {
+                            "type": "string"
+                          },
+                          "labels_url": {
+                            "type": "string"
+                          },
+                          "languages_url": {
+                            "type": "string"
+                          },
+                          "merges_url": {
+                            "type": "string"
+                          },
+                          "milestones_url": {
+                            "type": "string"
+                          },
+                          "mirror_url": {
+                            "type": "string"
+                          },
+                          "notifications_url": {
+                            "type": "string"
+                          },
+                          "pulls_url": {
+                            "type": "string"
+                          },
+                          "releases_url": {
+                            "type": "string"
+                          },
+                          "ssh_url": {
+                            "type": "string"
+                          },
+                          "stargazers_url": {
+                            "type": "string"
+                          },
+                          "statuses_url": {
+                            "type": "string"
+                          },
+                          "subscribers_url": {
+                            "type": "string"
+                          },
+                          "subscription_url": {
+                            "type": "string"
+                          },
+                          "svn_url": {
+                            "type": "string"
+                          },
+                          "tags_url": {
+                            "type": "string"
+                          },
+                          "teams_url": {
+                            "type": "string"
+                          },
+                          "trees_url": {
+                            "type": "string"
+                          },
+                          "homepage": {
+                            "type": "string"
+                          },
+                          "language": {
+                            "type": "null"
+                          },
+                          "forks_count": {
+                            "type": "number"
+                          },
+                          "stargazers_count": {
+                            "type": "number"
+                          },
+                          "watchers_count": {
+                            "type": "number"
+                          },
+                          "size": {
+                            "type": "number"
+                          },
+                          "default_branch": {
+                            "type": "string"
+                          },
+                          "open_issues_count": {
+                            "type": "number"
+                          },
+                          "has_issues": {
+                            "type": "boolean"
+                          },
+                          "has_wiki": {
+                            "type": "boolean"
+                          },
+                          "has_pages": {
+                            "type": "boolean"
+                          },
+                          "has_downloads": {
+                            "type": "boolean"
+                          },
+                          "pushed_at": {
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          },
+                          "permissions": {
+                            "type": "object",
+                            "properties": {
+                              "admin": {
+                                "type": "boolean"
+                              },
+                              "push": {
+                                "type": "boolean"
+                              },
+                              "pull": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "_links": {
+                    "type": "object",
+                    "properties": {
+                      "self": {
+                        "type": "object",
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "html": {
+                        "type": "object",
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "issue": {
+                        "type": "object",
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "comments": {
+                        "type": "object",
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "review_comments": {
+                        "type": "object",
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "review_comment": {
+                        "type": "object",
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "commits": {
+                        "type": "object",
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "statuses": {
+                        "type": "object",
+                        "properties": {
+                          "href": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "login": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "avatar_url": {
+                        "type": "string"
+                      },
+                      "gravatar_id": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      },
+                      "html_url": {
+                        "type": "string"
+                      },
+                      "followers_url": {
+                        "type": "string"
+                      },
+                      "following_url": {
+                        "type": "string"
+                      },
+                      "gists_url": {
+                        "type": "string"
+                      },
+                      "starred_url": {
+                        "type": "string"
+                      },
+                      "subscriptions_url": {
+                        "type": "string"
+                      },
+                      "organizations_url": {
+                        "type": "string"
+                      },
+                      "repos_url": {
+                        "type": "string"
+                      },
+                      "events_url": {
+                        "type": "string"
+                      },
+                      "received_events_url": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "site_admin": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "metadata": {
+              "type": "object",
+              "properties": {
+                "first_page": {
+                  "type": "number"
+                },
+                "last_page": {
+                  "type": "number"
+                },
+                "next_page": {
+                  "type": "number"
+                },
+                "prev_page": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
         "name": "list_repository_contributors",
         "title": "List repository contributors",
         "description": "List all of the contributors to a GitHub repository.",
@@ -1057,24 +4183,23 @@
             },
             "show_anonymous_contributors": {
               "type": "boolean",
-              "description": "Show anonymous contributors in results?",
               "default": false,
+              "description": "Show anonymous contributors in results?",
               "title": "Show anonymous contributors"
             },
             "page": {
               "type": "integer",
-              "description": "The page number of items you'd like to return.",
               "default": 1,
+              "description": "The page number of items you'd like to return.",
               "title": "Page"
             },
             "per_page": {
               "type": "integer",
-              "description": "How many items would you like to return per page? Max is 100.",
               "default": 100,
+              "description": "How many items would you like to return per page? Max is 100.",
               "title": "Per page"
             }
           },
-          "$schema": "http://json-schema.org/draft-04/schema#",
           "required": [
             "access_token",
             "username",
@@ -1085,6 +4210,7 @@
           "advanced": [
             "access_token"
           ],
+          "$schema": "http://json-schema.org/draft-04/schema#",
           "additionalProperties": false
         },
         "output_schema": {
@@ -1181,28 +4307,27 @@
             "sort": {
               "type": "string",
               "title": "Sort order",
-              "description": "The sort order of forks.",
-              "default": "newest",
               "enum": [
                 "newest",
                 "oldest",
                 "stargazers"
-              ]
+              ],
+              "default": "newest",
+              "description": "The sort order of forks."
             },
             "page": {
               "type": "integer",
-              "description": "The page number of items you'd like to return.",
               "default": 1,
+              "description": "The page number of items you'd like to return.",
               "title": "Page"
             },
             "per_page": {
               "type": "integer",
-              "description": "How many items would you like to return per page? Max is 100.",
               "default": 100,
+              "description": "How many items would you like to return per page? Max is 100.",
               "title": "Per page"
             }
           },
-          "$schema": "http://json-schema.org/draft-04/schema#",
           "required": [
             "access_token",
             "username",
@@ -1213,6 +4338,7 @@
           "advanced": [
             "access_token"
           ],
+          "$schema": "http://json-schema.org/draft-04/schema#",
           "additionalProperties": false
         },
         "output_schema": {

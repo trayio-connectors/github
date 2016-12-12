@@ -17,12 +17,6 @@ module.exports = {
 		},
 		page: '{{page}}',
 		per_page: '{{per_page}}'
-	},
-
-	afterSuccess: function (output) {
-		return {
-			items: output // connectors can't respond with arrays
-		}
 	}
 
 }

@@ -47,25 +47,29 @@ function getMetaData(linkHeader) {
     prev_page: null
   };
 
-  var linkArr = linkHeader.split(',');
+  if(linkHeader) {
 
-  _.each(linkArr, function (link) {
-    var start_pos = link.indexOf('<') + 1;
-    var end_pos = link.indexOf('>',start_pos);
-    var url = link.substring(start_pos,end_pos)
-    var page = Number(getParam(url, 'page'));
+    var linkArr = linkHeader.split(',');
 
-    if (link.indexOf('rel="last"') !== -1) {
-      metadata.last_page = page;
-    } else if (link.indexOf('rel="first"') !== -1) {
-      metadata.first_page = page;
-    } else if (link.indexOf('rel="next"') !== -1) {
-      metadata.next_page = page;
-    } else if (link.indexOf('rel="prev"') !== -1) {
-      metadata.prev_page = page;
-    }
-  });
+    _.each(linkArr, function (link) {
+      var start_pos = link.indexOf('<') + 1;
+      var end_pos = link.indexOf('>',start_pos);
+      var url = link.substring(start_pos,end_pos)
+      var page = Number(getParam(url, 'page'));
 
-  return metadata;
+      if (link.indexOf('rel="last"') !== -1) {
+        metadata.last_page = page;
+      } else if (link.indexOf('rel="first"') !== -1) {
+        metadata.first_page = page;
+      } else if (link.indexOf('rel="next"') !== -1) {
+        metadata.next_page = page;
+      } else if (link.indexOf('rel="prev"') !== -1) {
+        metadata.prev_page = page;
+      }
+    });
+
+    return metadata;
+
+  }
 
 }

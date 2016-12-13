@@ -6,8 +6,21 @@
 
 module.exports = {
 
-	title: 'Get user',
+  title: 'Get user',
 
-	description: 'Get details about a GitHub user.',
+  description: 'Get details about a GitHub user.'
+
+  globals: false,
+
+  // Input schema config
+  input: {
+
+    username: {
+      type: 'string',
+      required: true,
+      description: 'The GitHub username, e.g. "trayio"'
+    }
+
+  }
 
 };

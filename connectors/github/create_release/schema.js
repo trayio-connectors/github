@@ -13,12 +13,6 @@ module.exports = {
 	// Input schema config
 	input: {
 
-    repository: {
-      type: 'string',
-      required: true,
-      description: 'The GitHub repository, e.g. "falafel"'
-    },
-
     tag_name: {
       type: 'string',
       required: true,
@@ -49,6 +43,7 @@ module.exports = {
 			type: 'boolean',
 			description: 'true to identify the release as a prerelease. false to identify the release as a full release. Default: false'
 		}
+
 	}
 
 };

@@ -7,12 +7,6 @@
 
 module.exports = {
 
-  username: {
-    type: 'string',
-    required: true,
-    description: 'The GitHub username, e.g. "trayio"'
-  },
-
   input: {
     access_token: {
       type: 'string',
@@ -20,6 +14,18 @@ module.exports = {
       advanced: true,
       defaultJsonPath: '$.auth.access_token'
     }
+  },
+
+  username: {
+    type: 'string',
+    required: true,
+    description: 'The GitHub username, e.g. "trayio"'
+  },
+
+  repository: {
+    type: 'string',
+    required: true,
+    description: 'The GitHub repository, e.g. "falafel"'
   }
 
 };

@@ -13,12 +13,6 @@ module.exports = {
 	// Input schema config
 	input: {
 
-		repository: {
-			type: 'string',
-			required: true,
-			description: 'The GitHub repository, e.g. "falafel"'
-		},
-
 		show_anonymous_contributors: {
 			type: 'boolean',
 			description: 'Show anonymous contributors in results?',

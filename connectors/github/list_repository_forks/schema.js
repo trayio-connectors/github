@@ -13,12 +13,6 @@ module.exports = {
 	// Input schema config
 	input: {
 
-		repository: {
-			type: 'string',
-			required: true,
-			description: 'The GitHub repository, e.g. "falafel"'
-		},
-
 		sort: {
 			type: 'string',
 			title: 'Sort order',

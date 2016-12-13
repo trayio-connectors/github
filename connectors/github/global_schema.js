@@ -7,6 +7,12 @@
 
 module.exports = {
 
+  username: {
+    type: 'string',
+    required: true,
+    description: 'The GitHub username, e.g. "trayio"'
+  },
+
   input: {
     access_token: {
       type: 'string',

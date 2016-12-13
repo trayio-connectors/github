@@ -10,15 +10,4 @@ module.exports = {
 
 	description: 'Get details about a GitHub user.',
 
-	// Input schema config
-	input: {
-
-		username: {
-			type: 'string',
-			required: true,
-			description: 'The GitHub username, e.g. "trayio"'
-		}
-
-	}
-
 };

@@ -13,19 +13,19 @@ module.exports = {
       required: true,
       advanced: true,
       defaultJsonPath: '$.auth.access_token'
+    },
+
+    username: {
+      type: 'string',
+      required: true,
+      description: 'The GitHub username, e.g. "trayio"'
+    },
+
+    repository: {
+      type: 'string',
+      required: true,
+      description: 'The GitHub repository, e.g. "falafel"'
     }
-  },
-
-  username: {
-    type: 'string',
-    required: true,
-    description: 'The GitHub username, e.g. "trayio"'
-  },
-
-  repository: {
-    type: 'string',
-    required: true,
-    description: 'The GitHub repository, e.g. "falafel"'
   }
 
 };

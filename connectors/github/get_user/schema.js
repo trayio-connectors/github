@@ -15,6 +15,13 @@ module.exports = {
   // Input schema config
   input: {
 
+    access_token: {
+      type: 'string',
+      required: true,
+      advanced: true,
+      defaultJsonPath: '$.auth.access_token'
+    },
+
     username: {
       type: 'string',
       required: true,

@@ -40,6 +40,8 @@ module.exports = {
 */
 function getMetaData(linkHeader) {
 
+  if(!linkHeader) return null;
+
   var metadata = {
     first_page: 1,
     last_page: null,
@@ -47,29 +49,25 @@ function getMetaData(linkHeader) {
     prev_page: null
   };
 
-  if(linkHeader) {
+  var linkArr = linkHeader.split(',');
 
-    var linkArr = linkHeader.split(',');
+  _.each(linkArr, function (link) {
+    var start_pos = link.indexOf('<') + 1;
+    var end_pos = link.indexOf('>',start_pos);
+    var url = link.substring(start_pos,end_pos)
+    var page = Number(getParam(url, 'page'));
 
-    _.each(linkArr, function (link) {
-      var start_pos = link.indexOf('<') + 1;
-      var end_pos = link.indexOf('>',start_pos);
-      var url = link.substring(start_pos,end_pos)
-      var page = Number(getParam(url, 'page'));
+    if (link.indexOf('rel="last"') !== -1) {
+      metadata.last_page = page;
+    } else if (link.indexOf('rel="first"') !== -1) {
+      metadata.first_page = page;
+    } else if (link.indexOf('rel="next"') !== -1) {
+      metadata.next_page = page;
+    } else if (link.indexOf('rel="prev"') !== -1) {
+      metadata.prev_page = page;
+    }
+  });
 
-      if (link.indexOf('rel="last"') !== -1) {
-        metadata.last_page = page;
-      } else if (link.indexOf('rel="first"') !== -1) {
-        metadata.first_page = page;
-      } else if (link.indexOf('rel="next"') !== -1) {
-        metadata.next_page = page;
-      } else if (link.indexOf('rel="prev"') !== -1) {
-        metadata.prev_page = page;
-      }
-    });
-
-    return metadata;
-
-  }
+  return metadata;
 
 }

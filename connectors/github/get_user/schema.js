@@ -6,19 +6,28 @@
 
 module.exports = {
 
-	title: 'Get user',
+  title: 'Get user',
 
-	description: 'Get details about a GitHub user.',
+  description: 'Get details about a GitHub user.'
 
-	// Input schema config
-	input: {
+  globals: false,
 
-		username: {
-			type: 'string',
-			required: true,
-			description: 'The GitHub username, e.g. "trayio"'
-		}
+  // Input schema config
+  input: {
 
-	}
+    access_token: {
+      type: 'string',
+      required: true,
+      advanced: true,
+      defaultJsonPath: '$.auth.access_token'
+    },
+
+    username: {
+      type: 'string',
+      required: true,
+      description: 'The GitHub username, e.g. "trayio"'
+    }
+
+  }
 
 };

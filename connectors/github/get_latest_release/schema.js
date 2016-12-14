@@ -6,8 +6,8 @@
 
 module.exports = {
 
-	title: 'Get repository',
+	title: 'Get the latest release',
 
-	description: 'Get details about a GitHub repository.'
+	description: 'Get the latest release of a GitHub repository.'
 
 };

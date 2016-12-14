@@ -40,6 +40,8 @@ module.exports = {
 */
 function getMetaData(linkHeader) {
 
+  if(!linkHeader) return null;
+
   var metadata = {
     first_page: 1,
     last_page: null,

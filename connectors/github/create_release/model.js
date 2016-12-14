@@ -8,6 +8,7 @@
 module.exports = {
 
 	method: 'post',
+  expects: [201],
 
 	url: '/repos/{{username}}/{{repository}}/releases',
 

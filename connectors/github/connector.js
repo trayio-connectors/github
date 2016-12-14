@@ -16,7 +16,7 @@ module.exports = {
 
   // Version of the connector. Updating this will allow users to choose
   // which connector version they use in advanced settings of the tray UI.
-  version: '1.0',
+  version: '1.1',
 
   // Tags attached to the connector
   tags: ['service'],

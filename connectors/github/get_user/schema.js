@@ -8,7 +8,7 @@ module.exports = {
 
   title: 'Get user',
 
-  description: 'Get details about a GitHub user.'
+  description: 'Get details about a GitHub user.',
 
   globals: false,
 

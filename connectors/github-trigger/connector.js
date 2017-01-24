@@ -12,14 +12,14 @@ module.exports = {
   title: 'GitHub',
 
  	// The connector description
-  description: 'Interact with the GitHub API.',
+  description: 'Receive events from a GitHub repository.',
 
   // Version of the connector. Updating this will allow users to choose
   // which connector version they use in advanced settings of the tray UI.
-  version: '1.2',
+  version: '1.0',
 
   // Tags attached to the connector
-  tags: ['service'],
+  tags: ['trigger'],
 
   // Icon of the connector.
   icon: {

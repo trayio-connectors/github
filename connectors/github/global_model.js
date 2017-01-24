@@ -35,7 +35,7 @@ module.exports = {
 
 
 /*
-* Given Github's slightly odd link parameter response for pagination,
+* Given GitHub's slightly odd link parameter response for pagination,
 * extract the data into a usable "metadata" format.
 */
 function getMetaData(linkHeader) {

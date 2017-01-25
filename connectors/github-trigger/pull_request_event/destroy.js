@@ -1,1 +1,3 @@
-module.exports falafel.githubTrigger.deleteHookByUrl;
+module.exports = function (params) {
+  return falafel.githubTrigger.deleteHookByUrl(params);
+};

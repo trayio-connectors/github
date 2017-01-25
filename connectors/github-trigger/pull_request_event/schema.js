@@ -21,7 +21,8 @@ module.exports = {
           'opened',
           'edited',
           'closed',
-          'reopened'
+          'reopened',
+          'synchronize'
         ]
       }
     }

@@ -1,9 +1,9 @@
 
 module.exports = {
 
-  title: 'Pull Request',
+  title: 'Issue Comment',
 
-  description: 'Subscribes to GitHub pull_request event.',
+  description: 'Subscribes to GitHub issue_comment event.',
 
   input: {
     action: {

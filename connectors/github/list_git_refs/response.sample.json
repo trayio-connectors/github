@@ -1,0 +1,23 @@
+{
+  "items": [
+    {
+      "ref": "refs/heads/master",
+      "url": "https://api.github.com/repos/octocat/Hello-World/git/refs/heads/master",
+      "object": {
+        "sha": "7fd1a60b01f91b314f59955a4e4d4e80d8edf11d",
+        "type": "commit",
+        "url": "https://api.github.com/repos/octocat/Hello-World/git/commits/7fd1a60b01f91b314f59955a4e4d4e80d8edf11d"
+      }
+    },
+    {
+      "ref": "refs/heads/test",
+      "url": "https://api.github.com/repos/octocat/Hello-World/git/refs/heads/test",
+      "object": {
+        "sha": "b3cbd5bbd7e81436d2eee04537ea2b4c0cad4cdf",
+        "type": "commit",
+        "url": "https://api.github.com/repos/octocat/Hello-World/git/commits/b3cbd5bbd7e81436d2eee04537ea2b4c0cad4cdf"
+      }
+    }
+  ],
+  "metadata": null
+}

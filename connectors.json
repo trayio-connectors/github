@@ -187,7 +187,8 @@
               "items": {}
             }
           }
-        }
+        },
+        "dynamic_output": false
       },
       {
         "name": "create_status",
@@ -341,7 +342,8 @@
               }
             }
           }
-        }
+        },
+        "dynamic_output": false
       },
       {
         "name": "get_pull_request",
@@ -1489,7 +1491,8 @@
               "type": "number"
             }
           }
-        }
+        },
+        "dynamic_output": false
       },
       {
         "name": "get_repository",
@@ -2385,7 +2388,8 @@
               }
             }
           }
-        }
+        },
+        "dynamic_output": false
       },
       {
         "name": "get_latest_release",
@@ -2624,7 +2628,8 @@
               }
             }
           }
-        }
+        },
+        "dynamic_output": false
       },
       {
         "name": "get_user",
@@ -2749,7 +2754,96 @@
               "type": "string"
             }
           }
-        }
+        },
+        "dynamic_output": false
+      },
+      {
+        "name": "list_git_refs",
+        "title": "List Git refs",
+        "description": "Get Git ref objects",
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "access_token": {
+              "type": "string",
+              "default_jsonpath": "$.auth.access_token",
+              "title": "Access token"
+            },
+            "username": {
+              "type": "string",
+              "description": "The GitHub username, e.g. \"trayio\"",
+              "title": "Username"
+            },
+            "repository": {
+              "type": "string",
+              "description": "The GitHub repository, e.g. \"falafel\"",
+              "title": "Repository"
+            },
+            "type": {
+              "type": "string",
+              "description": "Type of refs to get (e.g. tags, heads, heads/prefix). If empty, will return default list of refs",
+              "title": "Type"
+            },
+            "prefix": {
+              "type": "string",
+              "description": "Prefix of the name of refs to get",
+              "title": "Prefix"
+            }
+          },
+          "required": [
+            "access_token",
+            "username",
+            "repository"
+          ],
+          "advanced": [
+            "access_token"
+          ],
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "additionalProperties": false
+        },
+        "output_schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ref": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "object": {
+                    "type": "object",
+                    "properties": {
+                      "sha": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "url": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "ref",
+                  "url",
+                  "object"
+                ]
+              }
+            },
+            "metadata": {
+              "type": "null"
+            }
+          }
+        },
+        "dynamic_output": false
       },
       {
         "name": "list_issues",
@@ -3184,7 +3278,8 @@
               }
             }
           }
-        }
+        },
+        "dynamic_output": false
       },
       {
         "name": "list_pull_requests",
@@ -4311,7 +4406,8 @@
               }
             }
           }
-        }
+        },
+        "dynamic_output": false
       },
       {
         "name": "list_repository_contributors",
@@ -4434,7 +4530,8 @@
               }
             }
           }
-        }
+        },
+        "dynamic_output": false
       },
       {
         "name": "list_repository_forks",
@@ -4770,7 +4867,8 @@
               }
             }
           }
-        }
+        },
+        "dynamic_output": false
       }
     ]
   },
@@ -4778,7 +4876,7 @@
     "name": "github-trigger",
     "title": "GitHub",
     "description": "Receive events from a GitHub repository.",
-    "version": "1.0",
+    "version": "1.1",
     "tags": [
       "trigger"
     ],
@@ -5377,7 +5475,8 @@
               }
             }
           }
-        }
+        },
+        "dynamic_output": false
       },
       {
         "name": "issue_event",
@@ -5900,7 +5999,8 @@
               }
             }
           }
-        }
+        },
+        "dynamic_output": false
       },
       {
         "name": "pull_request_event",
@@ -5944,7 +6044,8 @@
                   "opened",
                   "edited",
                   "closed",
-                  "reopened"
+                  "reopened",
+                  "synchronize"
                 ]
               },
               "additionalItems": true
@@ -7184,7 +7285,8 @@
               }
             }
           }
-        }
+        },
+        "dynamic_output": false
       },
       {
         "name": "pull_request_review_event",
@@ -8520,7 +8622,8 @@
               }
             }
           }
-        }
+        },
+        "dynamic_output": false
       },
       {
         "name": "push_event",
@@ -9012,7 +9115,8 @@
               }
             }
           }
-        }
+        },
+        "dynamic_output": false
       }
     ]
   }

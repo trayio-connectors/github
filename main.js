@@ -1,3 +1,5 @@
+throw new Error('Migrated to normal connector repo');
+
 var Falafel = require('@trayio/falafel');
 
 // Set up the lambda function by wrapping the current directory
